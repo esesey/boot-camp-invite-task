@@ -1,18 +1,21 @@
-let cards = []
 const searchInput = document.getElementById('search-input')
 const prevPageButton = document.getElementById('prev-page')
 const nextPageButton = document.getElementById('next-page')
 const pageNumber = document.getElementById('page-num')
+const loadingIndicator = document.getElementById('loading-indicator')
+let cards = []
 let page = 1
 pageNumber.textContent = page
 
 async function fetchCards() {
+    loadingIndicator.style.display = 'block'
     fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
     .then(response => response.json())
     .then(json => {
       cards = json.results
       cards.forEach(appendCard)})
     .catch(error => console.error('error fetching data:', error))
+    .finally(() => {loadingIndicator.style.display = 'none'})
 
     console.log('just fetched')
 }
@@ -86,7 +89,7 @@ function handlePrevPage() {
     page--
     updatePage()
   }
-  console.log('prev', page);
+  console.log('prev', page)
 }
 
 function handleNextPage() {
@@ -94,7 +97,7 @@ function handleNextPage() {
     page++
     updatePage()
   }
-  console.log('next', page);
+  console.log('next', page)
 }
 
 document.addEventListener('DOMContentLoaded', function() {

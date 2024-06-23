@@ -101,7 +101,7 @@ function handleNextPage() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  searchInput.addEventListener('search', updateSearch)
+  searchInput.onchange = updateSearch
   prevPageButton.onclick = handlePrevPage
   nextPageButton.onclick = handleNextPage
   fetchCards()

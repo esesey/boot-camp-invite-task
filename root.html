@@ -9,8 +9,15 @@
 
         <div class="header">
             <h1 id="main-header">Rick and Morty</h1>
-            <input id="search-input" value="Rick" onchange="()=>{console.log(changed);}"></input>
-            <button>Search!</button>
+            <div>
+                <h3>Search</h3>
+                <input id="search-input"></input>
+            </div>
+            <div class="paginator">
+                <button id="prev-page">&lt;</button>
+                <p4 id="page-num"></p4>
+                <button id="next-page">&gt;</button>
+            </div>
         </div>
 
         <div class="container" id="main">
@@ -31,13 +38,6 @@
 
             </template>
         </div>
-
-        <div class="paginator">
-            <button>&lt;</button>
-            <p4>Page...</p4>
-            <button>&gt;</button>
-        </div>
-
         <script src="/script.js"></script>
     </body>
 </html>

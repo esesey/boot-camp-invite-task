@@ -1,25 +1,36 @@
 let cards = []
-const searchInput = document.getElementById('search-input');
+const searchInput = document.getElementById('search-input')
+const prevPageButton = document.getElementById('prev-page')
+const nextPageButton = document.getElementById('next-page')
+const pageNumber = document.getElementById('page-num')
+let page = 1
+pageNumber.textContent = page
 
 async function fetchCards() {
-    fetch('https://rickandmortyapi.com/api/character')
+    fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
     .then(response => response.json())
     .then(json => {
       cards = json.results
-      cards.forEach(appendCards)})
+      cards.forEach(appendCard)})
     .catch(error => console.error('error fetching data:', error))
-    console.log('just fetched');
+
+    console.log('just fetched')
 }
 
+// Поиск выполняется по тем параметрам, которые показаны на карточке
 function updateSearch() {
   const filter = searchInput.value.toLowerCase()
   const filteredCards = cards.filter(card =>
-    card.name.toLowerCase().includes(filter))
-  const main = document.getElementById('main');
+    card.name.toLowerCase().includes(filter) ||
+    card.species.toLowerCase().includes(filter) ||
+    card.status.toLowerCase().includes(filter) ||
+    card.location.name.toLowerCase().includes(filter)
+  )
 
-  filteredCards.forEach(appendCards)
+  clearCards()
+  filteredCards.forEach(appendCard)
 
-  console.log('just updated');
+  console.log('just updated')
 }
 
 function composeCard(cardData) {
@@ -47,7 +58,7 @@ function composeCard(cardData) {
   return card
 }
 
-function appendCards(cardData) {
+function appendCard(cardData) {
   if (!cardData) {
     console.error('not found card data')
     return;
@@ -59,7 +70,36 @@ function appendCards(cardData) {
   main.append(cardNode)
 }
 
+function clearCards() {
+  let elements = document.querySelectorAll('.character')
+  elements.forEach(element => element.remove())
+}
+
+function updatePage(){
+  clearCards()
+  fetchCards()
+  pageNumber.textContent = page
+}
+
+function handlePrevPage() {
+  if (page != 1) {
+    page--
+    updatePage()
+  }
+  console.log('prev', page);
+}
+
+function handleNextPage() {
+  if (page != 42) {
+    page++
+    updatePage()
+  }
+  console.log('next', page);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  searchInput.addEventListener('input', updateSearch);
-  fetchCards();
-});
+  searchInput.addEventListener('search', updateSearch)
+  prevPageButton.onclick = handlePrevPage
+  nextPageButton.onclick = handleNextPage
+  fetchCards()
+})

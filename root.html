@@ -4,27 +4,40 @@
         <meta charset="UTF-8">
         <title>RaM page by esesey</title>
         <link href="style.css" rel="stylesheet">
-        <style>
-            h1 {
-                color:greenyellow;
-            }
-        </style>
     </head>
     <body>
-        <h1 id="main-header">Rick and Morty</h1>
+
+        <div class="header">
+            <h1 id="main-header">Rick and Morty</h1>
+            <input id="search-input" value="Rick" onchange="()=>{console.log(changed);}"></input>
+            <button>Search!</button>
+        </div>
+
         <div class="container" id="main">
             <template id="character-card">
+
                 <article class="character">
                     <h2></h2>
                     <img src="placeholder.png"/>
-                    <div>
+                    <div class="character-info">
+                        <b>Species: </b>
                         <p1></p1>
+                        <b>Status: </b>
                         <p2></p2>
+                        <b>Location: </b>
                         <p3></p3>
                     </div>
                 </article>
+
             </template>
         </div>
+
+        <div class="paginator">
+            <button>&lt;</button>
+            <p4>Page...</p4>
+            <button>&gt;</button>
+        </div>
+
         <script src="/script.js"></script>
     </body>
 </html>

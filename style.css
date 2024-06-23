@@ -6,29 +6,77 @@
 
   body {
     font-family: 'Courier New';
+    background-color: #323232;
     width: 100%;
     min-height: 100vh;
   }
 
   h1 {
+    font-family: 'Franklin Gothic Medium';
+    color:greenyellow;
     font-size: 40px;
+    text-align: center;
+    text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,  
+    -1px 1px 0 #000,  
+    1px 1px 0 #000;
+  }
+
+  h2 {
+    font-family: 'Franklin Gothic Medium';
+    max-width: 300px;
+    color:chartreuse;
+    text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,  
+    -1px 1px 0 #000,  
+    1px 1px 0 #000;
+  }
+
+  b {
+    color: yellow;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 5px;
   }
 
   p1, p2, p3 {
-    display: block;
+    display:block;
+    max-width: 300px;
+  }
+
+  [class^="header"] {
+    text-align: center;
+    margin: 40px;
   }
 
   [class^="character"] {
-    background-color: skyblue;
+    background-color:lightskyblue;
     display: grid;
     place-items: center;
+    border-radius: 50px;
+    margin: 10px;
   }
+
+  [class^="character-info"] {
+    place-items: left;
+  }
+
+  [class^="paginator"] {
+    text-align: center;
+    margin: 40px;
+    font-size: 20px;
+  }
+
 
   .container {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    justify-items: center;
+    justify-items: stretch;
     align-items: stretch;
   }

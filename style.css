@@ -53,6 +53,12 @@
     padding: 5px;
   }
 
+  p {
+    color: aliceblue;
+    font-size: 40px;
+    text-align: center;
+  }
+
   p1, p2, p3 {
     display:block;
     max-width: 300px;
@@ -90,7 +96,6 @@
     margin: 40px;
     font-size: 20px;
   }
-
 
   .container {
     display: grid;
